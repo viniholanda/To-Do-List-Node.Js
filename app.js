@@ -1,6 +1,9 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 const app = express()
 const port = 3000
+
+app.use(bodyParser.urlencoded({extended: true}))
 
 app.set('view engine', 'ejs');
 
@@ -12,6 +15,15 @@ app.get('/', (req, res) => {
     res.render("list", {
         kindOfDay: day
     })
+
+})
+
+app.post("/", function(req, res) {
+
+   var item = req.body.newItem
+
+    console.log(item);
+    
 
 })
 
